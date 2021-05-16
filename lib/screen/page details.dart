@@ -34,8 +34,10 @@ class _DetailesState extends State<Detailes> {
     servName = n;
     image = i;
     description = d;
-
-    return [servName, image, description];
+    print(servName);
+    print(image);
+    print(description);
+    return [servName, description, image];
   }
 
   var iduser;
@@ -59,7 +61,6 @@ class _DetailesState extends State<Detailes> {
   void initState() {
     super.initState();
     fdata();
-    // print(preferences.getString('account_id'));
   }
 
   @override
@@ -73,14 +74,13 @@ class _DetailesState extends State<Detailes> {
                 return Container(
                     child: Center(child: CircularProgressIndicator()));
               } else {
-                // ServicesModel n = snapshot.data[0];
                 return ListView(
                   children: [
                     //--------------------details service---------------------------------
                     Container(
                       height: 250,
                       child: GridTile(
-                        child: Image.network(snapshot.data[1].picture),
+                        child: Image.network(snapshot.data[2].picture),
                         footer: Container(
                           color: Colors.white70,
                           child: ListTile(
@@ -151,7 +151,7 @@ class _DetailesState extends State<Detailes> {
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          snapshot.data[2].serviceDescription,
+                          snapshot.data[1].serviceDescription,
                           style: kTextBody,
                         ),
                       ),
